@@ -4,6 +4,7 @@ node_modules
 cache
 artifacts
 
-.openzeppelin
+# OpenZeppelin
+.openzeppelin/unknown-*.json
 
 .eslintcache
