@@ -27,9 +27,7 @@
     "typescript": "^4.2.4"
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint"
-    ]
+    "*.ts": "eslint --cache --fix"
   },
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "^4.1.0"
