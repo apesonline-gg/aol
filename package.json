@@ -2,7 +2,8 @@
   "name": "hardhat-project",
   "scripts": {
     "test": "TS_NODE_TRANSPILE_ONLY=1 npx hardhat test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pretty-quick": "pretty-quick"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
@@ -24,11 +25,6 @@
     "pretty-quick": "^3.1.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "lint-staged": {
     "*.ts": [
