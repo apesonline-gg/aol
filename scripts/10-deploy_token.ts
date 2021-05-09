@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-    const Token = await ethers.getContractFactory("AolLogic0");
+    const Token = await ethers.getContractFactory("AOLv0");
     const token = await Token.deploy();
     await token.deployed();
     // TODO: Log tx info and token address

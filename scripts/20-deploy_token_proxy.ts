@@ -1,7 +1,7 @@
 import { ethers, upgrades } from "hardhat";
 
 async function main() {
-    const Token = await ethers.getContractFactory("AolLogic0");
+    const Token = await ethers.getContractFactory("AOLv0");
     const proxy = await upgrades.deployProxy(Token, ["Apes Online", "AOL"]);
     await proxy.deployed();
 }
