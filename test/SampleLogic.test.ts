@@ -13,7 +13,7 @@ describe("SampleLogic", function () {
     });
 
     it("retrieve returns a value previously stored", async function () {
-        await sampleLogic.store(42);
+        await sampleLogic.initialize(42);
         expect((await sampleLogic.retrieve()).toString()).to.equal("42");
     });
 });
