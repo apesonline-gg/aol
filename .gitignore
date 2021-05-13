@@ -8,3 +8,4 @@ artifacts
 .openzeppelin/unknown-*.json
 
 .eslintcache
+.env
