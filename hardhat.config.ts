@@ -15,7 +15,7 @@ task('accounts', 'Prints the list of accounts', async (args, hre) => {
 })
 
 const config: HardhatUserConfig = {
-  solidity: '0.8.0',
+  solidity: "0.8.2",
   gasReporter: {
     currency: "USD",
     enabled: process.env.REPORT_GAS == "true"
