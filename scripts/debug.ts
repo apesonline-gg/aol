@@ -1,9 +1,7 @@
-import { ethers, upgrades } from "hardhat";
+import { parseEther } from "@ethersproject/units";
 
 async function main() {
-    const Token = await ethers.getContractFactory("AOLv0");
-    const proxy = await upgrades.deployProxy(Token, ["Apes Online", "AOL"]);
-    await proxy.deployed();
+    const supply = parseEther("100000000");
 }
 
 main()

@@ -1,15 +1,17 @@
 import { ethers } from "hardhat";
 
 async function main() {
-    const Token = await ethers.getContractFactory("AOLv0");
+    const contractName = "AOLv0";
+
+    const Token = await ethers.getContractFactory(contractName);
     const token = await Token.deploy();
-    await token.deployed();
-    // TODO: Log tx info and token address
+    const deployed = await token.deployed();
+    console.log("Transaction hash:", deployed.deployTransaction.hash);
 }
 
 main()
     .then(() => {
-        console.log("Done");
+        console.log("Done deploy logic contract");
     })
     .catch((error) => {
         console.error(error);
