@@ -5,8 +5,8 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/presets/ERC20PresetFixed
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract AOLv0 is ERC20PresetFixedSupplyUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
-    uint256 public constant version = 0;
+contract SampleAOLv1 is ERC20PresetFixedSupplyUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
+    uint256 public constant version = 1;
 
     function initialize(
         string memory name,
