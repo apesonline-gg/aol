@@ -18,8 +18,8 @@ task('accounts', 'Prints the list of accounts', async (args, hre) => {
 });
 
 const AOLDeployerSK = process.env.AOL_DEPLOYER_PRIVATE_KEY || "";
-const infuraRinkebyUrl = process.env.INFURA_RINKEBY_URL;
-const infuraMainnetUrl = process.env.INFURA_MAINNET_URL;
+const infuraRinkebyUrl = process.env.INFURA_RINKEBY_URL || "";
+const infuraMainnetUrl = process.env.INFURA_MAINNET_URL || "";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.2",

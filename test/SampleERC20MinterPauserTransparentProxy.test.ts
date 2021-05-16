@@ -1,5 +1,6 @@
 import { Signer } from "@ethersproject/abstract-signer";
 import { Contract, ContractFactory } from "@ethersproject/contracts";
+import { parseEther } from "@ethersproject/units";
 import { getManifestAdmin } from "@openzeppelin/hardhat-upgrades/dist/admin";
 import { expect } from "chai";
 import hre, { ethers, upgrades } from "hardhat";
@@ -24,24 +25,27 @@ let selfAddress: string;
 let alexAddress: string;
 let bethAddress: string;
 
-describe("AOL Transparent Proxy", function () {
+const TOTAL_SUPPLY_STRING = "1984000000";
+const TOTAL_SUPPLY = parseEther(TOTAL_SUPPLY_STRING);
+
+describe("SampleERC20MinterPauser Transparent Proxy", function () {
     before(async function () {
         proxyAdmin = await getManifestAdmin(hre);
-        await deployV0();
         [self, alex, beth] = await ethers.getSigners();
         selfAddress = await self.getAddress();
         alexAddress = await alex.getAddress();
         bethAddress = await beth.getAddress();
+        await deployV0();
     });
 
     async function deployV0() {
-        Token0 = await ethers.getContractFactory("AOLv0");
+        Token0 = await ethers.getContractFactory("SampleERC20MinterPauser");
         proxy = await upgrades.deployProxy(Token0, ["Apes Online", "AOL"]);
         await proxy.deployed();
     }
 
     async function upgradeToFixedSupplyToken() {
-        Token1 = await ethers.getContractFactory("SampleFixedSupplyToken");
+        Token1 = await ethers.getContractFactory("SampleERC20FixedSupply");
         proxy = await upgrades.upgradeProxy(proxy.address, Token1);
     }
 
@@ -70,7 +74,7 @@ describe("AOL Transparent Proxy", function () {
             );
         });
     });
-    it("can not be upgraded to fixed supply ERC20", async function () {
+    it("can not be upgraded to ERC20 fixed supply", async function () {
         let error = "";
         try {
             await upgradeToFixedSupplyToken();

@@ -20,7 +20,7 @@ async function main() {
     const tokenName = "Modem";
     const tokenSymbol = "MODEM";
     const totalSupply = parseEther("56000");
-    const owner = "0x0478c5B8ec412aCb666568a9D14f78Af6C4Aeaa9";
+    const owner = process.env.OWNER;
 
     console.log(
         `Deploying Modem upgradedable contract`,

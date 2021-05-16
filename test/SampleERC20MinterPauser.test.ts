@@ -1,5 +1,6 @@
 import { Signer } from "@ethersproject/abstract-signer";
 import { Contract, ContractFactory } from "@ethersproject/contracts";
+import { parseEther } from "@ethersproject/units";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
@@ -15,7 +16,10 @@ let selfAddress: string;
 let alexAddress: string;
 let bethAddress: string;
 
-describe("AOLv0 token", function () {
+const TOTAL_SUPPLY_STRING = "1984000000";
+const TOTAL_SUPPLY = parseEther(TOTAL_SUPPLY_STRING);
+
+describe("SampleERC20MinterPauser token", function () {
     before(async function() {
         [self, alex, beth] = await ethers.getSigners();
         selfAddress = await self.getAddress();
@@ -24,7 +28,7 @@ describe("AOLv0 token", function () {
     });
 
     beforeEach(async function () {
-        Token = await ethers.getContractFactory("AOLv0");
+        Token = await ethers.getContractFactory("SampleERC20MinterPauser");
         token = await Token.deploy();
         await token.deployed();
     });
