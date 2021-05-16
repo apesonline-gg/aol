@@ -5,25 +5,38 @@ import { ethers, upgrades } from "hardhat";
 require("dotenv").config();
 
 async function main() {
+    const proxyKind = "uups";
     const logicContractName = "AOLv0";
     const tokenName = "Apes Online";
     const tokenSymbol = "AOL";
-    const owner = process.env.OWNER;
     const totalSupply = parseEther("1984000000");
+    const owner = process.env.OWNER;
+
+    console.log(
+        `Deploying AOL upgradedable contract`,
+        `=> kind: ${proxyKind}`,
+        `=> logic contract: ${logicContractName}`,
+        `=> logic params:`,
+        `    => token name: ${tokenName}`,
+        `    => token symbol: ${tokenSymbol}`,
+        `    => total supply: ${totalSupply.toString()}`,
+        `    => owner: ${owner}`,
+    );
 
     const Token = await ethers.getContractFactory(logicContractName);
     const proxy = await upgrades.deployProxy(
         Token,
         [tokenName, tokenSymbol, totalSupply, owner],
-        { kind: "uups" }
+        { kind: proxyKind }
     );
+    console.log("Proxy:", proxy);
     const deployed = await proxy.deployed();
     console.log("Transaction hash:", deployed.deployTransaction.hash);
 }
 
 main()
     .then(() => {
-        console.log("Done deploying proxy contract");
+        console.log("Done deploying AOL");
     })
     .catch((error) => {
         console.error(error);
