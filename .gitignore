@@ -9,3 +9,6 @@ artifacts
 
 .eslintcache
 .env
+
+# Misc
+.ignore
