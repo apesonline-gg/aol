@@ -8,16 +8,25 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 contract SampleAOLv1 is ERC20PresetFixedSupplyUpgradeable, OwnableUpgradeable, UUPSUpgradeable {
     uint256 public constant version = 1;
 
-    function initialize(
+    uint256 private _totalSupply;
+
+    string private _name;
+    string private _symbol;
+
+    function updateStorage(
         string memory name,
         string memory symbol,
         uint256 initialSupply,
         address owner
-    ) public virtual override initializer {
-        __Ownable_init();
-        __UUPSUpgradeable_init();
-        __ERC20PresetFixedSupply_init(name, symbol, initialSupply, owner);
+    ) public {
+        _name = name;
+        _symbol = symbol;
+        _totalSupply = initialSupply;
         transferOwnership(owner);
+    }
+
+    function name() public view virtual override returns (string memory) {
+        return _name;
     }
 
     function _authorizeUpgrade(address) internal override onlyOwner {}
