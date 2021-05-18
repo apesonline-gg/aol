@@ -4,18 +4,10 @@ import { parseEther, formatEther } from "@ethersproject/units";
 import { expect } from "chai";
 import { ethers, upgrades } from "hardhat";
 
-import {
-    DEFAULT_ADMIN_ROLE,
-    MINTER_ROLE,
-    PAUSER_ROLE,
-} from "./helpers/constants";
-
 let Token0: ContractFactory;
 let Token1: ContractFactory;
 let token0: Contract;
 let token1: Contract;
-let proxy: Contract;
-let proxyAdmin: Contract;
 
 let self: Signer;
 let alex: Signer;
