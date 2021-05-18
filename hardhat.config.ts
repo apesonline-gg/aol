@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
     mainnet: {
       url: infuraMainnetUrl,
       accounts: [AOLDeployerSK],
-      gasPrice: 150000000000
+      gasPrice: 60000000000
     },
     rinkeby: {
       url: infuraRinkebyUrl,

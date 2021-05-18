@@ -4,23 +4,25 @@ import { ethers, upgrades } from "hardhat";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
+const TOTAL_SUPPLY_ETH = "1984000000";
+
 async function main() {
     const proxyKind = "uups";
     const logicContractName = "AOLv0";
     const tokenName = "Apes Online";
     const tokenSymbol = "AOL";
-    const totalSupply = parseEther("1984000000");
+    const totalSupply = parseEther(TOTAL_SUPPLY_ETH);
     const owner = process.env.OWNER;
 
     console.log(
-        `Deploying AOL upgradedable contract`,
-        `=> kind: ${proxyKind}`,
-        `=> logic contract: ${logicContractName}`,
-        `=> logic params:`,
-        `    => token name: ${tokenName}`,
-        `    => token symbol: ${tokenSymbol}`,
-        `    => total supply: ${totalSupply.toString()}`,
-        `    => owner: ${owner}`,
+        `Deploying AOL upgradedable contract\n`,
+        `=> kind: ${proxyKind}\n`,
+        `=> logic contract: ${logicContractName}\n`,
+        `=> logic params\n`,
+        `    => token name: ${tokenName}\n`,
+        `    => token symbol: ${tokenSymbol}\n`,
+        `    => total supply: ${totalSupply.toString()} (${TOTAL_SUPPLY_ETH} ETH)\n`,
+        `    => owner: ${owner}\n`,
     );
 
     const Token = await ethers.getContractFactory(logicContractName);
